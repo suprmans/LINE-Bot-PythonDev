@@ -1,6 +1,8 @@
 import os
 import uvicorn
 
+from dotenv import load_dotenv
+
 from fastapi import FastAPI, Request, HTTPException, Header
 
 from linebot.v3 import WebhookHandler
@@ -19,6 +21,8 @@ from linebot.v3.messaging import (
 
 
 app = FastAPI()
+
+load_dotenv(override=True)
 
 # LINE Access Key
 get_access_token = os.getenv('ACCESS_TOKEN')
