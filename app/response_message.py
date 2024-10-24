@@ -1,12 +1,8 @@
 from linebot.v3.messaging import TextMessage, Emoji
 
-from dalert.dalert_disaster import disaster_alert
-
 def reponse_message(event):
-    # print(event)
     request_message = event.message.text
-
-    if request_message.startswith("hello"):
+    if request_message.lower() == "hello":
         emoji_data = [
             {
                 "index": 0,
@@ -25,7 +21,7 @@ def reponse_message(event):
         return TextMessage(text=text_response, emojis=emojis)
     
 
-    if request_message.startswith("พยากรณ์อากาศ"):
+    if request_message.startswith("พยาการณ์อากาศ"):
         pass
     
     
