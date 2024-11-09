@@ -52,6 +52,9 @@ def handle_message(event: MessageEvent):
 
         reply_message = reponse_message(event) # TextMessage, FlexMessage
 
+        if not reply_message:
+            return None
+
         line_bot_api.reply_message(
             ReplyMessageRequest(
                 reply_token=event.reply_token,

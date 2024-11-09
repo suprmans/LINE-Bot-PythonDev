@@ -1,33 +1,30 @@
 from linebot.v3.messaging import TextMessage, Emoji
 
-from dalert.dalert_disaster import disaster_alert
+from tmd.weather_forecast import daily_forecast
 
 def reponse_message(event):
-    # print(event)
     request_message = event.message.text
-
-    if request_message.startswith("hello"):
+    if request_message.lower() == "hello":
         emoji_data = [
             {
                 "index": 0,
                 "productId": "5ac1bfd5040ab15980c9b435",
-                "emojiId": "009"
+                "emojiId": "002"
             },
             {
-                "index": 18,
+                "index": 37,
                 "productId": "5ac21c46040ab15980c9b442",
-                "emojiId": "006"
+                "emojiId": "002"
             },
         ]
         emojis = [Emoji(**emoji) for emoji in emoji_data]
-        message = "$ สวัสดี from Dev $"
-        response = TextMessage(text=message, emojis=emojis)
-        return response
+
+        text_response = "$ Hello/สวัสดีครับ from PythonDevBot $"
+        return TextMessage(text=text_response, emojis=emojis)
     
 
-    if request_message.startswith("เตือนภัย"):
-        return disaster_alert(event)
+    if request_message.startswith("พยากรณ์อากาศ"):
+        return daily_forecast(event)
     
     
-    else: 
-        return TextMessage(text="ไม่พบข้อความอัตโนมัติ กรุณาลองใหม่อีกครั้ง")
+    else: return None
