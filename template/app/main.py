@@ -19,7 +19,7 @@ from linebot.v3.messaging import (
     # Emoji,
 )
 
-from response_message import reponse_message
+from app.response_message import reponse_message
 
 
 app = FastAPI()
